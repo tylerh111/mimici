@@ -19,7 +19,7 @@ pub mod options {
     }
 }
 
-/// Modal argument parser
+/// Modal configuration manager
 #[derive(Parser)]
 #[command(version, about, long_about = None)]
 pub struct Arguments {
@@ -32,5 +32,4 @@ pub struct Arguments {
 
 /// Modal commands
 #[derive(Subcommand)]
-pub enum Commands {
-}
+pub enum Commands {}
