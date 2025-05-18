@@ -17,6 +17,9 @@ pub mod options {
         #[arg(short, long, value_name = "dir")]
         pub repository: Option<PathBuf>,
     }
+
+    #[derive(Args)]
+    pub struct InitArgs {}
 }
 
 /// Modal configuration manager
@@ -32,4 +35,7 @@ pub struct Arguments {
 
 /// Modal commands
 #[derive(Subcommand)]
-pub enum Commands {}
+pub enum Commands {
+    /// Initialize modal config repo
+    Init(options::InitArgs),
+}
