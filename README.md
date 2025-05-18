@@ -1,5 +1,15 @@
 # mimici
 
+## roadmap
+
+* [ ] initialize
+* [ ] git passthrough integration
+* [ ] manifest code
+* [ ] add / rm
+* [ ] backup / sync
+* [ ] profile
+* [ ] templates
+
 ## names
 
 * reposit
@@ -51,6 +61,8 @@
 
 ## `manifest.json`
 
+use json: https://docs.rs/json/latest/json/
+
 ```json
 {
     "name": "<profile>",
@@ -93,6 +105,11 @@
     ]
 }
 ```
+
+## Templates
+
+use jinja: https://docs.rs/json/latest/json/
+
 
 ## CLI
 
