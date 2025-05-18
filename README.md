@@ -5,8 +5,9 @@
 * [ ] initialize
 * [ ] git passthrough integration
 * [ ] manifest code
-* [ ] add / rm
-* [ ] backup / sync
+* [ ] tracking (add, rm, mv)
+* [ ] backup
+* [ ] sync
 * [ ] profile
 * [ ] templates
 
