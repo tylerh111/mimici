@@ -20,11 +20,11 @@
 ## Config structure
 
 ```bash
-~/.config/reposit/
-|-- store -> ~/.local/share/reposit
+~/.config/modal/
+|-- store -> ~/.local/share/modal
 |-- profile -> ./store/profiles/<profile>
 
-~/.local/share/reposit/
+~/.local/share/modal/
 |-- profiles
     |-- default
         |-- home
@@ -98,33 +98,33 @@
 
 ```bash
 # global options
-reposit
-    --store=~/.local/reposit
+modal
+    --store=~/.local/modal
 
 # repo
-reposit init <profile>
+modal init <profile>
 
 # profile
-reposit activate <profile>
-reposit deactivate <profile>
+modal activate <profile>
+modal deactivate <profile>
 
 # tracking
-reposit add  <file|dir> # add a new config file
+modal add  <file|dir> # add a new config file
     --group=...
     --app=...
     --install=...
     --permissions=...
-reposit rm   <file|dir> # remove a config file
+modal rm   <file|dir> # remove a config file
 
 # backup and sync
-reposit backup  # backup all changes made to tracked files
+modal backup  # backup all changes made to tracked files
     --message="..."
-reposit diff    # check diff between vault vs live
-reposit sync    # copy files over
+modal diff    # check diff between vault vs live
+modal sync    # copy files over
     --force
 
 # plumbing
-reposit git ...
+modal git ...
 ```
 
 ## Thoughts
