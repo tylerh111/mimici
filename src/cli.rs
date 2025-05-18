@@ -1,108 +1,64 @@
-
 use clap::{Parser, Subcommand};
-
 
 pub mod options {
 
-use std::path::PathBuf;
+    use std::path::PathBuf;
 
-use clap::Args;
+    use clap::Args;
 
-#[derive(Args)]
-#[group(required = false, multiple = false)]
-pub struct GlobalArgs {
-    /// Modal config file for operation
-    #[arg(
-        short,
-        long,
-        value_name = "file",
-    )]
-    pub config: Option<PathBuf>,
+    #[derive(Args)]
+    #[group(required = false, multiple = false)]
+    pub struct GlobalArgs {
+        /// Modal config file for operation
+        #[arg(short, long, value_name = "file")]
+        pub config: Option<PathBuf>,
 
-    /// Modal dot file repository
-    #[arg(
-        short,
-        long,
-        value_name = "dir",
-    )]
-    pub repository: Option<PathBuf>,
+        /// Modal dot file repository
+        #[arg(short, long, value_name = "dir")]
+        pub repository: Option<PathBuf>,
+    }
+
+    #[derive(Args)]
+    pub struct InitArgs {}
+
+    #[derive(Args)]
+    pub struct ActivateArgs {}
+
+    #[derive(Args)]
+    pub struct DeactivateArgs {}
+
+    #[derive(Args)]
+    pub struct SwitchArgs {}
+
+    #[derive(Args)]
+    pub struct AddArgs {}
+
+    #[derive(Args)]
+    pub struct RemoveArgs {}
+
+    #[derive(Args)]
+    pub struct BackupArgs {}
+
+    #[derive(Args)]
+    pub struct DiffArgs {}
+
+    #[derive(Args)]
+    pub struct SyncArgs {}
+
+    #[derive(Args)]
+    pub struct GitArgs {}
 }
-
-
-#[derive(Args)]
-pub struct InitArgs {
-
-}
-
-
-#[derive(Args)]
-pub struct ActivateArgs {
-
-}
-
-
-#[derive(Args)]
-pub struct DeactivateArgs {
-
-}
-
-
-#[derive(Args)]
-pub struct SwitchArgs {
-
-}
-
-
-#[derive(Args)]
-pub struct AddArgs {
-
-}
-
-
-#[derive(Args)]
-pub struct RemoveArgs {
-
-}
-
-
-#[derive(Args)]
-pub struct BackupArgs {
-
-}
-
-
-#[derive(Args)]
-pub struct DiffArgs {
-
-}
-
-
-#[derive(Args)]
-pub struct SyncArgs {
-
-}
-
-
-#[derive(Args)]
-pub struct GitArgs {
-
-}
-
-}
-
 
 /// Modal argument parser
 #[derive(Parser)]
 #[command(version, about, long_about = None)]
 pub struct Arguments {
-
     #[command(flatten)]
     pub options: options::GlobalArgs,
 
     #[command(subcommand)]
     pub command: Commands,
 }
-
 
 /// Modal commands
 #[derive(Subcommand)]
