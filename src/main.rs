@@ -1,10 +1,13 @@
 
+mod app;
+mod backup;
 mod cli;
-
-use clap::Parser;
+mod git;
+mod manifest;
+mod profile;
+mod sync;
+mod track;
 
 fn main() {
-    println!("Hello, world!");
-    let args = cli::Args::parse();
-
+    app::run()
 }

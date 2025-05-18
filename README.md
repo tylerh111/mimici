@@ -99,7 +99,8 @@
 ```bash
 # global options
 modal
-    --store=~/.local/modal
+    --config=~/.config/modal/modal.toml
+    --repo=~/.local/share/modal
 
 # repo
 modal init <profile>
@@ -107,6 +108,7 @@ modal init <profile>
 # profile
 modal activate <profile>
 modal deactivate <profile>
+modal switch <profile>
 
 # tracking
 modal add  <file|dir> # add a new config file
