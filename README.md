@@ -1,11 +1,28 @@
 # mimici
 
+## names
 
-Config structure
+* reposit
+* ~~bank~~
+* ~~vault~~
+* stower
+* stowage
+* binco
+* ~~bindle~~
+* portpack (like backpack)
+* portmanteau (hard to spell)
+* cohold/conhold/confhold/confighold (like stronghold)
+* ddot
+* **modal**
+
+---
+
+## Config structure
 
 ```bash
 ~/.config/reposit/
-|-- profile -> ~/.local/share/reposit/profiles/<profile>
+|-- store -> ~/.local/share/reposit
+|-- profile -> ./store/profiles/<profile>
 
 ~/.local/share/reposit/
 |-- profiles
@@ -32,7 +49,7 @@ Config structure
         |-- manifest.json
 ```
 
-manifest.json
+## `manifest.json`
 
 ```json
 {
@@ -77,7 +94,7 @@ manifest.json
 }
 ```
 
-CLI
+## CLI
 
 ```bash
 # global options
@@ -110,8 +127,6 @@ reposit sync    # copy files over
 reposit git ...
 ```
 
----
-
-Alternative
+## Thoughts
 
 * profiles are tracked via branches

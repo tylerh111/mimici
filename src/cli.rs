@@ -17,7 +17,7 @@ pub struct ArgsTest {
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
 pub struct Args {
-    ///
-};
+
+}
 
 
