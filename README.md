@@ -15,9 +15,29 @@
 
 ```bash
 <repodir>/ (default=~/.local/share/mimici)
-|--
+|-- .git
+|-- default
+|-- <app>
+|-- manifest.json
+|-- README.md
 ```
 
+```json
+{
+    "profile": "...",
+    "prefix": null | "/path/to/dir",
+    "special": "home" | "root",
+    "files": [
+        {
+            "app": "...",
+            "path": "...",
+            "install": "...",
+            "permissions": "...",
+        },
+        ...
+    ]
+}
+```
 
 ---
 
