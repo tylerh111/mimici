@@ -1,31 +1,44 @@
-use clap::{Parser, Subcommand};
+use clap;
+
+pub mod defaults {
+    pub const DEFAULT_REPO_DIR: &str = "./.mimici/";
+    pub const DEFAULT_GIT_EXEC: &str = "git";
+}
 
 pub mod options {
 
     use std::path::PathBuf;
 
-    use clap::Args;
+    use clap;
 
-    #[derive(Args)]
+    #[derive(clap::Args)]
     #[group(required = false, multiple = false)]
     pub struct GlobalArgs {
         /// mimici dot file repository
-        #[arg(short = 'C', value_name = "dir", default_value = "./.mimici/")]
+        #[arg(
+            short = 'C',
+            value_name = "dir",
+            default_value = super::defaults::DEFAULT_REPO_DIR,
+        )]
         pub repo: PathBuf,
 
         /// git executable to run git commands (only for `mimici git`)
-        #[arg(long, value_name = "git", default_value = "git")]
+        #[arg(
+            long,
+            value_name = "git",
+            default_value = super::defaults::DEFAULT_GIT_EXEC,
+        )]
         pub git: PathBuf,
     }
 
-    #[derive(Args)]
+    #[derive(clap::Args)]
     pub struct InitArgs {
         /// git remote for dot file repostiroy
         #[arg(value_name = "url")]
         pub remote: Option<String>,
     }
 
-    #[derive(Args)]
+    #[derive(clap::Args)]
     pub struct GitArgs {
         /// arguments to git command
         #[arg(value_name = "arg")]
@@ -34,7 +47,7 @@ pub mod options {
 }
 
 /// mimici configuration manager
-#[derive(Parser)]
+#[derive(clap::Parser)]
 #[command(version, about, long_about = None)]
 pub struct Arguments {
     #[command(flatten)]
@@ -45,7 +58,7 @@ pub struct Arguments {
 }
 
 /// mimici commands
-#[derive(Subcommand)]
+#[derive(clap::Subcommand)]
 pub enum Commands {
     /// Execute git commands in the mimici config repo
     Git(options::GitArgs),
