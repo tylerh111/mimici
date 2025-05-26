@@ -12,6 +12,10 @@ pub mod options {
         /// mimici dot file repository
         #[arg(short, long, value_name = "dir", default_value = "./.mimici/")]
         pub repository: PathBuf,
+
+        /// git executable to run git commands (only for `mimici git`)
+        #[arg(long, value_name = "git", default_value = "git")]
+        pub git: PathBuf,
     }
 
     #[derive(Args)]
@@ -19,6 +23,13 @@ pub mod options {
         /// git remote for dot file repostiroy
         #[arg(value_name = "url")]
         pub remote: Option<String>,
+    }
+
+    #[derive(Args)]
+    pub struct GitArgs {
+        /// arguments to git command
+        #[arg(value_name = "arg")]
+        pub args: Vec<String>,
     }
 }
 
@@ -36,6 +47,8 @@ pub struct Arguments {
 /// mimici commands
 #[derive(Subcommand)]
 pub enum Commands {
+    /// Execute git commands in the mimici config repo
+    Git(options::GitArgs),
     /// Initialize mimici config repo
     Init(options::InitArgs),
 }
