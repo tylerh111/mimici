@@ -24,18 +24,18 @@
 * portmanteau (hard to spell)
 * cohold/conhold/confhold/confighold (like stronghold)
 * ddot
-* **modal**
+* **mimici**
 
 ---
 
 ## Config structure
 
 ```bash
-~/.config/modal/
-|-- store -> ~/.local/share/modal
+~/.config/mimici/
+|-- store -> ~/.local/share/mimici
 |-- profile -> ./store/profiles/<profile>
 
-~/.local/share/modal/
+~/.local/share/mimici/
 |-- profiles
     |-- default
         |-- home
@@ -116,35 +116,35 @@ use jinja: https://docs.rs/json/latest/json/
 
 ```bash
 # global options
-modal
-    --config=~/.config/modal/modal.toml
-    --repo=~/.local/share/modal
+mimici
+    --config=~/.config/mimici/mimici.toml
+    --repo=~/.local/share/mimici
 
 # repo
-modal init <profile>
+mimici init <profile>
 
 # profile
-modal activate <profile>
-modal deactivate <profile>
-modal switch <profile>
+mimici activate <profile>
+mimici deactivate <profile>
+mimici switch <profile>
 
 # tracking
-modal add  <file|dir> # add a new config file
+mimici add  <file|dir> # add a new config file
     --group=...
     --app=...
     --install=...
     --permissions=...
-modal rm   <file|dir> # remove a config file
+mimici rm   <file|dir> # remove a config file
 
 # backup and sync
-modal backup  # backup all changes made to tracked files
+mimici backup  # backup all changes made to tracked files
     --message="..."
-modal diff    # check diff between vault vs live
-modal sync    # copy files over
+mimici diff    # check diff between vault vs live
+mimici sync    # copy files over
     --force
 
 # plumbing
-modal git ...
+mimici git ...
 ```
 
 ## Thoughts

@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for taking the time to contribute to Modal!
+Thank you for taking the time to contribute to mimici!
 All types of contributions are encouraged and valued.
 Please refer to this page for ways to contribute.
 
@@ -121,16 +121,16 @@ The following additions to your feature could help improve it.
 
 ## Thank You!
 
-You are help Modal grow and prosper with your involvement.
+You are help mimici grow and prosper with your involvement.
 We hope to see your contributions in the project soon!
 
 <!-- links -->
-[project]:             https://github.com/tylerh111/modal
-[star]:                https://github.com/tylerh111/modal
-[watch]:               https://github.com/tylerh111/modal
-[fork]:                https://github.com/tylerh111/modal/fork
-[issues]:              https://github.com/tylerh111/modal/issues
-[open an issue]:       https://github.com/tylerh111/modal/issues/new
-[pull requests]:       https://github.com/tylerh111/modal/pulls
-[open a pull request]: https://github.com/tylerh111/modal/compare
-[documentation]:       https://docs.rs/modal
+[project]:             https://github.com/tylerh111/mimici
+[star]:                https://github.com/tylerh111/mimici
+[watch]:               https://github.com/tylerh111/mimici
+[fork]:                https://github.com/tylerh111/mimici/fork
+[issues]:              https://github.com/tylerh111/mimici/issues
+[open an issue]:       https://github.com/tylerh111/mimici/issues/new
+[pull requests]:       https://github.com/tylerh111/mimici/pulls
+[open a pull request]: https://github.com/tylerh111/mimici/compare
+[documentation]:       https://docs.rs/mimici

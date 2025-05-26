@@ -3,13 +3,13 @@ use clap::Parser;
 use crate::cli::{Arguments, Commands};
 use crate::cli::options::*;
 
-pub fn modal_run_init(_opts: &GlobalArgs, _args: &InitArgs) {
-    println!("modal init");
+pub fn mimici_run_init(_opts: &GlobalArgs, _args: &InitArgs) {
+    println!("mimici init");
 }
 
 pub fn run() {
     let args = Arguments::parse();
     match &args.command {
-        Commands::Init(cargs) => modal_run_init(&args.options, &cargs),
+        Commands::Init(cargs) => mimici_run_init(&args.options, &cargs),
     }
 }

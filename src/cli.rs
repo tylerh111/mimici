@@ -9,11 +9,11 @@ pub mod options {
     #[derive(Args)]
     #[group(required = false, multiple = false)]
     pub struct GlobalArgs {
-        /// Modal config file for operation
+        /// mimici config file for operation
         #[arg(short, long, value_name = "file")]
         pub config: Option<PathBuf>,
 
-        /// Modal dot file repository
+        /// mimici dot file repository
         #[arg(short, long, value_name = "dir")]
         pub repository: Option<PathBuf>,
     }
@@ -22,7 +22,7 @@ pub mod options {
     pub struct InitArgs {}
 }
 
-/// Modal configuration manager
+/// mimici configuration manager
 #[derive(Parser)]
 #[command(version, about, long_about = None)]
 pub struct Arguments {
@@ -33,9 +33,9 @@ pub struct Arguments {
     pub command: Commands,
 }
 
-/// Modal commands
+/// mimici commands
 #[derive(Subcommand)]
 pub enum Commands {
-    /// Initialize modal config repo
+    /// Initialize mimici config repo
     Init(options::InitArgs),
 }
