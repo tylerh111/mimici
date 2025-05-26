@@ -2,7 +2,10 @@ use std::path::PathBuf;
 
 use git2::Repository;
 
-pub fn init_repo(path: &PathBuf, remote: &Option<String>) {
+pub fn init_repo(
+    path: &PathBuf,
+    remote: &Option<String>,
+) {
     if let Ok(_) = Repository::open(path) {
         println!("mimici: repository already exists: {}", path.display());
         return;
