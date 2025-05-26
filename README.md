@@ -11,20 +11,13 @@
 * [ ] profile
 * [ ] templates
 
-## names
+### initial structure
 
-* reposit
-* ~~bank~~
-* ~~vault~~
-* stower
-* stowage
-* binco
-* ~~bindle~~
-* portpack (like backpack)
-* portmanteau (hard to spell)
-* cohold/conhold/confhold/confighold (like stronghold)
-* ddot
-* **mimici**
+```bash
+<repodir>/ (default=~/.local/share/mimici)
+|--
+```
+
 
 ---
 
@@ -36,6 +29,7 @@
 |-- profile -> ./store/profiles/<profile>
 
 ~/.local/share/mimici/
+|-- .git
 |-- profiles
     |-- default
         |-- home

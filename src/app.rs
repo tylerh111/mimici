@@ -1,10 +1,11 @@
 use clap::Parser;
 
-use crate::cli::{Arguments, Commands};
 use crate::cli::options::*;
+use crate::cli::{Arguments, Commands};
+use crate::init::*;
 
 pub fn mimici_run_init(_opts: &GlobalArgs, _args: &InitArgs) {
-    println!("mimici init");
+    init_repo(&_opts.repository, &_args.remote);
 }
 
 pub fn run() {

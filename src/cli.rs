@@ -9,17 +9,17 @@ pub mod options {
     #[derive(Args)]
     #[group(required = false, multiple = false)]
     pub struct GlobalArgs {
-        /// mimici config file for operation
-        #[arg(short, long, value_name = "file")]
-        pub config: Option<PathBuf>,
-
         /// mimici dot file repository
-        #[arg(short, long, value_name = "dir")]
-        pub repository: Option<PathBuf>,
+        #[arg(short, long, value_name = "dir", default_value = "./.mimici/")]
+        pub repository: PathBuf,
     }
 
     #[derive(Args)]
-    pub struct InitArgs {}
+    pub struct InitArgs {
+        /// git remote for dot file repostiroy
+        #[arg(value_name = "url")]
+        pub remote: Option<String>,
+    }
 }
 
 /// mimici configuration manager
