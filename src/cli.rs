@@ -10,8 +10,8 @@ pub mod options {
     #[group(required = false, multiple = false)]
     pub struct GlobalArgs {
         /// mimici dot file repository
-        #[arg(short, long, value_name = "dir", default_value = "./.mimici/")]
-        pub repository: PathBuf,
+        #[arg(short = 'C', value_name = "dir", default_value = "./.mimici/")]
+        pub repo: PathBuf,
 
         /// git executable to run git commands (only for `mimici git`)
         #[arg(long, value_name = "git", default_value = "git")]
