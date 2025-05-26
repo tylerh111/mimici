@@ -10,12 +10,6 @@ pub fn execute_git_command(exec: &PathBuf, repo: &PathBuf, args: &Vec<String>) -
         .args(args);
 
     println!("> {:?}", cmd);
-    println!(
-        "> {:?} {:?}",
-        // cmd.get_envs().collect(),
-        cmd.get_program().to_str(),
-        cmd.get_args().collect::<Vec<_>>(),
-    );
 
     let status = cmd
         .status()
