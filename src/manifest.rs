@@ -5,17 +5,16 @@ use serde::{Serialize, Deserialize};
 
 #[derive(Deserialize, Serialize)]
 pub struct File {
-    app: Option<String>,
-    path: String,
-    install: PathBuf,
-    permissions: String,
+    pub path: PathBuf,
+    pub install: PathBuf,
+    pub app: Option<String>,
 }
 
 #[derive(Deserialize, Serialize)]
 pub struct Manifest {
-    profile: String,
-    prefix: Option<PathBuf>,
-    special: String,
-    files: Vec<File>,
+    pub profile: String,
+    pub prefix: Option<PathBuf>,
+    pub special: String,
+    pub files: Vec<File>,
 }
 

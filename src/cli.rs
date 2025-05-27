@@ -33,9 +33,13 @@ pub mod options {
 
     #[derive(clap::Args)]
     pub struct InitArgs {
-        /// Git remote for dot file repostiroy
+        /// Git remote for dot file repo
         #[arg(value_name = "url")]
         pub remote: Option<String>,
+
+        /// Clone a repo instead of initializing it
+        #[arg(short, long)]
+        pub clone: bool
     }
 
     #[derive(clap::Args)]
