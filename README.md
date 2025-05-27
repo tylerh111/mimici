@@ -39,6 +39,59 @@
 }
 ```
 
+```bash
+# global options
+mimici
+    -C=~/.local/share/mimici
+
+# repo
+mimici init
+
+# plumbing
+mimici git
+
+# tracking
+mimici add  <file|dir> # add a new config file
+    --app=...
+    --install=...
+
+# backup and sync
+mimici backup  # backup all changes made to tracked files
+    --message="..."
+mimici diff    # check diff between vault vs live
+```
+
+```bash
+mimici add ~/.bashrc
+mimici add ~/.config/user-dirs.dirs
+mimici add ~/.gdbinit --app gdb
+mimici add ~/.config/fish/* --app fish
+# manifest
+# {
+#     ...,
+#     "files": [
+#         { "path": "default/.config/user-dirs.dirs", "install": ".config/user-dirs.dirs"                        },
+#         { "path": "default/.bashrc",                "install": ".bashrc"                                       },
+#         { "path": "fish/functions/ll.fish",         "install": ".config/fish/functions/ll.fish", "app": "fish" },
+#         { "path": "fish/config.fish",               "install": ".config/fish/config.fish",       "app": "fish" },
+#         { "path": "gdb/.gdbinit",                   "install": ".gdbinit",                       "app": "fish" },
+#     ]
+# }
+# repo
+# |-- default
+# |   |-- .config
+# |   |   |-- user-dirs.dirs
+# |   |-- .bashrc
+# |-- fish
+# |   |-- functions
+# |   |   |-- ll.fish
+# |   |-- config.fish
+# |-- gdb
+# |   |-- .gdbinit
+# |-- manifest.json
+```
+
+
 ---
 
 ## Config structure
