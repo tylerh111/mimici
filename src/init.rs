@@ -5,7 +5,7 @@ use std::io::BufReader;
 use git2::Repository;
 use serde_json;
 
-use crate::error::MimiciError;
+use crate::error::MimiciResult;
 use crate::manifest::Manifest;
 
 
@@ -18,7 +18,7 @@ This is a repository of config files (dotfiles) managed by [mimici](https://crat
 
 pub fn init_readme(
     workdir: &PathBuf,
-) -> Result<(), MimiciError> {
+) -> MimiciResult {
     let file = workdir.join("README.md");
     let readme = TEMPLATE_README_CONTENTS;
 
@@ -29,7 +29,7 @@ pub fn init_readme(
 
 pub fn init_manifest(
     workdir: &PathBuf,
-) -> Result<(), MimiciError> {
+) -> MimiciResult {
     let file = workdir.join("manifest.json");
     let manifest = Manifest{
         profile: "default".to_string(),
@@ -59,7 +59,7 @@ pub fn init_repo_clone(
     exec: &PathBuf,
     path: &PathBuf,
     remote: &String,
-) -> Result<(), MimiciError> {
+) -> MimiciResult {
     use crate::git::execute_git_command;
 
     if let Ok(_) = Repository::open(path) {
@@ -99,7 +99,7 @@ pub fn init_repo(
     exec: &PathBuf,
     path: &PathBuf,
     remote: &Option<String>,
-) -> Result<(), MimiciError> {
+) -> MimiciResult {
     use crate::git::execute_git_command;
 
     if let Ok(_) = Repository::open(path) {
