@@ -14,7 +14,7 @@ pub mod options {
     #[derive(clap::Args)]
     #[group(required = false, multiple = false)]
     pub struct GlobalArgs {
-        /// mimici dot file repository
+        /// Mimici dot file repository
         #[arg(
             short = 'C',
             value_name = "dir",
@@ -22,7 +22,7 @@ pub mod options {
         )]
         pub repo: PathBuf,
 
-        /// git executable to run git commands (only for `mimici git`)
+        /// Git executable to run git commands (only for `mimici git`)
         #[arg(
             long,
             value_name = "git",
@@ -33,14 +33,14 @@ pub mod options {
 
     #[derive(clap::Args)]
     pub struct InitArgs {
-        /// git remote for dot file repostiroy
+        /// Git remote for dot file repostiroy
         #[arg(value_name = "url")]
         pub remote: Option<String>,
     }
 
     #[derive(clap::Args)]
     pub struct GitArgs {
-        /// arguments to git command
+        /// Arguments to git command
         #[arg(value_name = "arg")]
         pub args: Vec<String>,
     }
