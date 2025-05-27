@@ -20,8 +20,8 @@ pub fn mimici_run_init(
         let remote = args.remote.as_ref().ok_or(String::from("require remote"))?;
         init_repo_clone(&opts.git, &opts.repo, &remote)
     } else {
-    init_repo(&opts.git, &opts.repo, &args.remote)
-}
+        init_repo(&opts.git, &opts.repo, &args.remote)
+    }
 }
 
 pub fn run() -> MimiciResult {
