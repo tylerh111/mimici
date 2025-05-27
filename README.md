@@ -51,21 +51,23 @@ mimici init
 mimici git
 
 # tracking
-mimici add  <file|dir> # add a new config file
+mimici add <pattern> # the "installed" path
     --app=...
-    --install=...
+mimici rm  <pattern> # the "tracked" path
+    --app=...
 
 # backup and sync
 mimici backup  # backup all changes made to tracked files
     --message="..."
-mimici diff    # check diff between vault vs live
+mimici sync    # copy files over
+    --force
 ```
 
 ```bash
 mimici add ~/.bashrc
 mimici add ~/.config/user-dirs.dirs
-mimici add ~/.gdbinit --app gdb
-mimici add ~/.config/fish/* --app fish
+mimici add ~/.gdbinit                --app gdb
+mimici add ~/.config/fish/*          --app fish
 # manifest
 # {
 #     ...,
