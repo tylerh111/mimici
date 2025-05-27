@@ -1,9 +1,12 @@
 use std::path::PathBuf;
+use std::fs::File;
+use std::io::BufReader;
 
 use git2::Repository;
 use serde_json;
 
 use crate::error::MimiciError;
+use crate::manifest::Manifest;
 
 
 const TEMPLATE_README_CONTENTS: &str = r##"
@@ -14,15 +17,9 @@ This is a repository of config files (dotfiles) managed by [mimici](https://crat
 
 
 pub fn init_readme(
-    repo: &Repository,
+    workdir: &PathBuf,
 ) -> Result<(), MimiciError> {
-    let workdir = repo.workdir().unwrap();
     let file = workdir.join("README.md");
-
-    if file.exists() {
-        println!("skipping initialization of 'README.md': file already exists");
-    }
-
     let readme = TEMPLATE_README_CONTENTS;
 
     std::fs::write(file, readme)?;
@@ -31,17 +28,9 @@ pub fn init_readme(
 }
 
 pub fn init_manifest(
-    repo: &Repository,
+    workdir: &PathBuf,
 ) -> Result<(), MimiciError> {
-    use crate::manifest::Manifest;
-
-    let workdir = repo.workdir().unwrap();
     let file = workdir.join("manifest.json");
-
-    if file.exists() {
-        println!("skipping initialization of 'manifest.json': file already exists");
-    }
-
     let manifest = Manifest{
         profile: "default".to_string(),
         prefix: None,
@@ -49,9 +38,21 @@ pub fn init_manifest(
         files: vec![],
     };
 
-    std::fs::write(file, serde_json::to_string(&manifest)?)?;
+    std::fs::write(file, serde_json::to_string_pretty(&manifest)?)?;
 
     Ok(())
+}
+
+pub fn get_manifest(
+    workdir: &PathBuf,
+) -> Result<Manifest, MimiciError> {
+    let path = workdir.join("manifest.json");
+    let file = File::open(path)?;
+
+    // checking if the manifest can be parsed by the `Manifest` struct
+    let reader = BufReader::new(file);
+    let manifest: Manifest = serde_json::from_reader(reader)?;
+    Ok(manifest)
 }
 
 pub fn init_repo_clone(
@@ -68,16 +69,26 @@ pub fn init_repo_clone(
 
     // clone repository
     let repo  = Repository::clone(remote, path)?;
+    let workdir = repo.workdir().ok_or(String::from("error: no workdir"))?.to_path_buf();
 
-    init_readme(&repo)?;
-    init_manifest(&repo)?;
+    let manifest = get_manifest(&workdir);
+    if manifest.is_ok() {
+        return Ok(());
+    }
+
+    init_manifest(&workdir)?;
+
+    let mut index = repo.index()?;
+    index.add_all(["*"].iter(), git2::IndexAddOption::DEFAULT, None)?;
+    index.write()?;
 
     execute_git_command(
         &exec,
-        &repo.workdir().unwrap().to_path_buf(),
+        &workdir,
         &vec![
-            String::from("add"),
-            String::from("*"),
+            String::from("commit"),
+            String::from("-m"),
+            String::from("'mimici setup'")
         ],
     );
 
@@ -99,12 +110,14 @@ pub fn init_repo(
     // initialize repository and set the remote to
     // added initial files for mimici operations
     let repo = Repository::init(path)?;
+    let workdir = &repo.workdir().ok_or(String::from("error: no workdir"))?.to_path_buf();
+
     remote.as_ref().inspect(|url| {
         let _ = repo.remote("origin", url.as_str());
     });
 
-    init_readme(&repo)?;
-    init_manifest(&repo)?;
+    init_readme(&workdir)?;
+    init_manifest(&workdir)?;
 
     let mut index = repo.index()?;
     index.add_all(["*"].iter(), git2::IndexAddOption::DEFAULT, None)?;
@@ -112,10 +125,11 @@ pub fn init_repo(
 
     execute_git_command(
         &exec,
-        &repo.workdir().unwrap().to_path_buf(),
+        &workdir,
         &vec![
-            String::from("add"),
-            String::from("*"),
+            String::from("commit"),
+            String::from("-m"),
+            String::from("'initial commit'")
         ],
     );
 
